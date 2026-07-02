@@ -14,9 +14,9 @@ public sealed class OrleansAdoNetInvariantAnnotation(string invariant) : IResour
     /// <summary>
     /// Gets the Orleans ADO.NET Invariant to use for the resource.
     /// </summary>
-    public string Invariant { get; } = ValidateAdonetInvariant(invariant);
+    public string Invariant { get; } = ValidateAdoNetInvariant(invariant);
 
-    private static string ValidateAdonetInvariant(string invariant)
+    private static string ValidateAdoNetInvariant(string invariant)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(invariant);
 
