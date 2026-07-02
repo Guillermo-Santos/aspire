@@ -36,7 +36,15 @@ internal sealed class ProviderConfiguration(string providerType, string? service
 
     private static string ValidateInvariant(string? invariant)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(invariant, "ADO.NET Invariant");
+        if (invariant is null)
+        {
+            throw new ArgumentNullException(nameof(invariant), "Orleans ADO.NET providers require an invariant. Configure it by calling WithOrleansAdoNetInvariant on the resource builder.");
+        }
+
+        if (string.IsNullOrWhiteSpace(invariant))
+        {
+            throw new ArgumentException("Orleans ADO.NET providers require an invariant. Configure it by calling WithOrleansAdoNetInvariant on the resource builder.", nameof(invariant));
+        }
 
         return invariant;
     }
